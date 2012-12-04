@@ -59,13 +59,15 @@ gezwungen, User2 zu sperren. Dafür betritt der Admin eine Seite mit sämtlichen
 Usern und sperrt dann den Übeltäter.
 
 
-6. Der Admin kontrolliert den Bestand an Komponenten und bemerkt eine Veraltete, 
+6. Der Server-Admin kontrolliert den Bestand an Komponenten und bemerkt eine Veraltete, 
 von der inzwischen geschätzte 20 verbesserte Versionen existieren. Diese möchte 
 er nun evtl. aus dem System entfernen. Dazu gibt es eine Newsseite die über
 alle Neuigkeiten Informiert.
-Um über seine Änderung alle zu informieren schickt er eine Mail an den Admin
+Um über seine Änderung alle zu informieren schickt er eine Mail an den Website-Admin
 das diese Komponente entfernt wird und das die Komponenten X, Y, .. als
-Verbesserung zur Verfügung stehen.
+Verbesserung zur Verfügung stehen. Dies wird dann auf der Newsseite
+eingepflegt. Und die Informationen und Dateien zu
+dieser Komponente von der Website gelöscht. (keine neuen Downloads dieser)
 
 Möglicherweise ein Zeitfenster angeben ab wann die Komponente offline ist?
 In den meisten Fällen wird die Komponte wohl erst rausgenommen wenn sie
