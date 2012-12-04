@@ -35,6 +35,13 @@ Detailseite und schickt sie an weitere Teammitglieder seines Projektes. Wenn
 diese auf den Link klicken können sie sich einige Details zu der Seite
 anschauen, finden aber keinerlei Informationen wie die Komponente zu benutzen
 ist. Diese können sie erst sehen, wenn sie sich ebenfalls einloggen.
+
+Ist es nötig das die Teammitglieder einen Login benötigen?
+Die Informationen zur .Ci Datein (dem Header mit den Funktionen) sind in der
+Manifest enthalten (welche Funktionen sind enthalten)
+Diese wird mit heruntergeladen und kann einfach an alle Teammitglieder verteilt
+werden, womit ein Login dieser nicht nötig ist.
+
 ###TODO: Wie sieht das mit dem Ausführen dann aus?
 
 
