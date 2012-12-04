@@ -1,0 +1,32 @@
+Funktionen:
+
+                     --User--
+-registieren
+-einloggen
+-eigene komponenten hochladen(eingeloggt)
+-kurzzeitig nach dem hochladen kann sie ohne die bestätigung des Admin ersetzt 
+ werden
+-alle können die Suchfunktion nutzen mit allerlei Suchkriterien
+-man kann die detailseite einer komponente sehen (uneingeloggt sieht keine      
+    details zur benutzung der Komponente)
+-User haben eine Profil (mit komponentenliste, email, etc)
+-Alle können auf die Profile der User einsehen (unterschiedliche ansicht für gäste und user)
+-User können ihre Komponenten bearbeiten
+-User können sich über andere User für ungebührliches Verhalten melden
+
+                    
+                     --WebAdmin--
+    
+-WebAdmin überprüft die Anmeldungen von Usern, und muss das "ok" geben
+-WebAdmin kann User sperren
+-WebAdmin kann Neuigkeiten in der Newsseite erstellen
+
+
+                    
+                    --KomponentenAdmin--
+                    
+-KomponentenAdmin überprüft die neuen Kommponenten, und muss das "ok" 
+geben
+-KomponentenAdmin kann veraltete Komponenten löschen (nach ner wartezeit von 7 
+tagen)     
+-KompponentenAdmin schickt dazu noch eine mail an alle website-admins            
