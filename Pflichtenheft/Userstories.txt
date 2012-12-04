@@ -8,12 +8,11 @@ freigeschaltet werden kann.)
 
 
 
-2. Ein User hat eine neue Komponente und ihre Daten und möchte diese in das 
-System integrieren. Dazu loggt er sich mit seinem Account ein und geht über 
-einen Link in ein Eingabeformular. Dort gibt er die Daten in das Formular ein 
-und schickt sie ab. Er erhält eine Nachricht über den Erfolg bzw. eventuelle 
-Fehler. (Ein Administrator kontrolliert die Daten und schaltet die Komponente 
-dann frei)
+2. Ein User hat eine neue Komponente und ihre Daten und möchte diese in das System
+integrieren. Dazu loggt er sich mit seinem Account ein und geht über einen Link
+in ein Eingabeformular. Dort gibt er die Daten in das Formular ein und schickt
+sie ab. Er erhält eine Nachricht über den Erfolg bzw. eventuelle Fehler. (Ein
+Administrator kontrolliert die Daten und schaltet die Komponente dann frei)
 Erweiterung: Nach dem Einschicken bemerkt dieser, dass er eine falsche Datei 
 geschickt hat und möchte diese sofort wieder löschen und diese danach durch
 die richtige Komponente ersetzen.
@@ -35,13 +34,6 @@ Detailseite und schickt sie an weitere Teammitglieder seines Projektes. Wenn
 diese auf den Link klicken können sie sich einige Details zu der Seite
 anschauen, finden aber keinerlei Informationen wie die Komponente zu benutzen
 ist. Diese können sie erst sehen, wenn sie sich ebenfalls einloggen.
-
-Ist es nötig das die Teammitglieder einen Login benötigen?
-Die Informationen zur .Ci Datein (dem Header mit den Funktionen) sind in der
-Manifest enthalten (welche Funktionen sind enthalten)
-Diese wird mit heruntergeladen und kann einfach an alle Teammitglieder verteilt
-werden, womit ein Login dieser nicht nötig ist.
-
 ###TODO: Wie sieht das mit dem Ausführen dann aus?
 
 
@@ -59,24 +51,19 @@ gewünschten Änderungen vornehmen und bestätigen.
 
 
 
-5. Ein User1 bemerkt, dass User2 das System missbraucht und meldet ihn beim 
-Admin. Dieser überprüft die Fakten und macht entweder nichts oder sieht sich 
-gezwungen, User2 zu sperren. Dafür betritt der Admin eine Seite mit sämtlichen 
-Usern und sperrt dann den Übeltäter.
-
+5. Ein User macht sich auf irgendeine Weise mehrfach negativ bemerkbar, sodass
+sich
+der Admin gezwungen sieht, dieses User zu sperren. Dafür betritt der Admin eine
+Seite mit sämtlichen Usern und sperrt dann den Gewünschten.
 
 
 6. Der Admin kontrolliert den Bestand an Komponenten und bemerkt eine Veraltete, 
 von der inzwischen geschätzte 20 verbesserte Versionen existieren. Diese möchte 
-er nun evtl. aus dem System entfernen. Gleichzeitig zum Entfernen müsste aber 
-ein Programm eingefügt werden (oder auf dieses verlinkt werden), welche eine 
-Fehlermeldung zurückgibt, dass das gewünschte Programm nicht (mehr) vorhanden 
-ist - nur für den Fall, dass noch Komponenten existieren, die diese veraltete 
-Version benutzen.
-
-
-
-7. Ein User ist von den Programmen eines anderen Users begeistert und möchte 
-eine Gesamtliste seiner Komponenten zu sehen bekommen. Dafür muss dieser auf 
-dessen Profil und bekommt dort gleichzeitig noch Kontaktdaten wie z.B. die 
-E-Mail-Adresse.
+er nun evtl. aus dem System entfernen. Dann hinterlässt er eine Mitteilung auf
+der Homepage, die besagt dass die veraltete Komponente in 7 Tagen entfernt wird.
+Der Admin hinterlässt außerdem einen Link zu einer seiner Meinung nach guten
+Nachfolgerkomponente. Gleichzeitig zum Entfernen müsste aber ein
+Programm eingefügt werden (oder auf dieses verlinkt werden), welche eine 
+Fehlermeldung zurückgibt, dass das gewünschte Programm nicht (mehr) vorhanden ist - 
+nur für den Fall, dass noch Komponenten existieren, die diese veraltete Version 
+benutzen.
