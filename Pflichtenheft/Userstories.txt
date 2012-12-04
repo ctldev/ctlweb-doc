@@ -7,7 +7,6 @@ stattfinden, sodass der Administrator Bescheid weiss, dass der Account
 freigeschaltet werden kann.)
 
 
-
 2. Ein User hat eine neue Komponente und ihre Daten und möchte diese in das 
 System integrieren. Dazu loggt er sich mit seinem Account ein und geht über 
 einen Link in ein Eingabeformular. Dort gibt er die Daten in das Formular ein 
@@ -17,7 +16,6 @@ dann frei)
 Erweiterung: Nach dem Einschicken bemerkt dieser, dass er eine falsche Datei 
 geschickt hat und möchte diese sofort wieder löschen und diese danach durch
 die richtige Komponente ersetzen.
-
 
 
 3. Ein User möchte eine Komponente zur Berechnung zur Multiplikation von
@@ -41,10 +39,7 @@ Die Informationen zur .Ci Datein (dem Header mit den Funktionen) sind in der
 Manifest enthalten (welche Funktionen sind enthalten)
 Diese wird mit heruntergeladen und kann einfach an alle Teammitglieder verteilt
 werden, womit ein Login dieser nicht nötig ist.
-
-###TODO: Wie sieht das mit dem Ausführen dann aus?
-
-
+ 
 
 4. Ein User, der eine seiner Komponenten geändert hat möchte diese Änderungen nun
 in das System einpflegen. Dazu geht er auf seine Profilseite in der alle seine
@@ -58,22 +53,23 @@ gewünschten Änderungen vornehmen und bestätigen.
 ### Beim Ändern von der Komponente siehe Geschichte 2 
 
 
-
 5. Ein User1 bemerkt, dass User2 das System missbraucht und meldet ihn beim 
 Admin. Dieser überprüft die Fakten und macht entweder nichts oder sieht sich 
 gezwungen, User2 zu sperren. Dafür betritt der Admin eine Seite mit sämtlichen 
 Usern und sperrt dann den Übeltäter.
 
 
-
 6. Der Admin kontrolliert den Bestand an Komponenten und bemerkt eine Veraltete, 
 von der inzwischen geschätzte 20 verbesserte Versionen existieren. Diese möchte 
-er nun evtl. aus dem System entfernen. Gleichzeitig zum Entfernen müsste aber 
-ein Programm eingefügt werden (oder auf dieses verlinkt werden), welche eine 
-Fehlermeldung zurückgibt, dass das gewünschte Programm nicht (mehr) vorhanden 
-ist - nur für den Fall, dass noch Komponenten existieren, die diese veraltete 
-Version benutzen.
+er nun evtl. aus dem System entfernen. Dazu gibt es eine Newsseite die über
+alle Neuigkeiten Informiert.
+Um über seine Änderung alle zu informieren schickt er eine Mail an den Admin
+das diese Komponente entfernt wird und das die Komponenten X, Y, .. als
+Verbesserung zur Verfügung stehen.
 
+Möglicherweise ein Zeitfenster angeben ab wann die Komponente offline ist?
+In den meisten Fällen wird die Komponte wohl erst rausgenommen wenn sie
+wirklich nicht mehr läuft
 
 
 7. Ein User ist von den Programmen eines anderen Users begeistert und möchte 
