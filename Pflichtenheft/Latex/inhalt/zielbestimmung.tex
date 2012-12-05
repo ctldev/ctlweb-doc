@@ -6,22 +6,34 @@
 \chapter{Zielbestimmung}
 
 %Hier Einleitungstext einfügen, dabei die Formatierungen selber erstellen
-\begin{itemize}
-\item  System für Programmkomponenten
-\item  Bereitstellung von CTL (Component Template Library)
-\item  Zugriff auf CTL
-\item  Für intra-universitären Austausch
-\end{itemize}
+
+
+Das Ziel unseres Projektes ist es, ein System zu erstellen, welches es unserer Benutzergruppe erlaubt, eigene Komponenten bereitzustellen bzw. Komponenten anderer im eigenen Projekt zu verwenden, sowie die Ausführung dieser Komponenten auf Computerclustern. Für die Anzeige der Komponenten wird ein Webinterface bereitgestellt, das Ausführen der Komponenten übernimmt ein zweites paralleles System.
+Die Benutzergruppe umschließt vorerst die TU-Braunschweig, evtl. auch andere Universitäten sowie Institutionen. 
+ 
 
 \section{Musskriterien}
 
+%\begin{itemize}
+%\item  Es muss eine Webfrontend geben um die Compontents einzusehen
+%\item  Webfrontend muss initialen Quellcode Snippets bereit stellen.
+%\item  Stabilität des Systems
+%\item  Push für Manifest ins Frontend
+%\item  Pull von Cluster der Manifestdateien
+%\item  Upload von Manifest ins Frontend
+%\end{itemize}
+
 \begin{itemize}
-\item  Es muss eine Webfrontend geben um die Compontents einzusehen
-\item  Webfrontend muss initialen Quellcode Snippets bereit stellen.
-\item  Stabilität des Systems
-\item  Push für Manifest ins Frontend
-\item  Pull von Cluster der Manifestdateien
-\item  Upload von Manifest ins Frontend
+\item Webinterface für die "Discovery", d.h. das Webinterface besitzt eine gut funktionierende Suche, welche dem Nutzer als Ergebnis die gewünschten Komponenten anzeigt
+\item Die Detailseite der Komponenten enthält erste wichtige Informationen wie Name, Autor, Version etc. auf, weiterhin wird eine Quellcode
+Snippet bereitgestellt
+\item Rollen: 
+\begin{description}
+\item{Gast}kann nach Komponenten suchen, kann deren Details ansehen
+\item{registrierter Nutzer} kann Komponenten bei sich einfügen, kann "Programme" mit diesen Fremdkomponenten starten
+\item{Administrator} kann das Webinterface anpassen, d.h. Komponenten freischalten/löschen, Nutzer freischalten/löschen etc.
+\end{description}
+\item ein zweites System, welches die Verbindungen der Komponenten zu den Clustern bereitstellt
 \end{itemize}
 
 \paragraph{Benutzerdaten}
