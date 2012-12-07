@@ -3,44 +3,37 @@
 
 
 \chapter{Benutzeroberfläche}
-In diesem Kapitel werden grundlegende Anforderungen an die Benutzungsoberfläche
-festgelegt, z. B. Fensterlayout, Dialogstruktur und Mausbedienung. Die
-Festlegungen sollen sich auf die produktspezifischen Ausprägungen beschränken.
-Details werden durch Prototypen und Pilotsysteme spezifiziert (ggf. im Anhang
-des Pflichtenhefts).
 
-Gibt es verschiedene Rollen, die das Produkt benutzen (z. B. Sachbearbeiter,
-Administrator), dann sind für jede Rolle die Zugriffsrechte und die davon
-abhängigen sichtbaren Benutzeroberflächen (Menüs, Fenster, Benutzerdialoge,
-\ldots) aufzuführen.
+Die Benutzeroberfläche wird unterteilt in mindestens drei Webseiten:
+Ausgehend von einer Suchseite, werden die Ergebnisse tabellarisch unter der
+Suchmaske angezeigt, die auf Detailseiten weiterführen. 
+Der Benutzer hat je nach Rechtestatus eine Gast-/Benutzer- oder eine Administrationsumgebung (zum Beispiel zum normalen Einsehen, Verändern, Löschen von Komponenten). 
 
-Die einzelnen Anforderungen werden analog wie die Funktionsanforderungen
-nummeriert, allerdings mit dem vorangesetzten Buchstaben B.
+\section{/B10/ Seitenlayout}
 
-Bei Produkten, die keine Benutzeroberfläche haben, werden hier analog die
-Schnittstellenkonventionen beschreiben, die für das anwendende System wichtig
-sind.
+ \begin{itemize}
+   \item Komponentendatenbank
+   \begin{itemize}
+    \item Suche
+      \begin{description}
+       \item[Einfache Suche] Die einfache Suche soll relativ unkompliziert funktionieren:
+        Sie besteht lediglich aus einer Eingabefläche, worin der Benutzer
+       den Namen der Komponente, Autoren oder Sonstiges eingeben kann. 
+       \item[Erweiterte Suche] Die erweiterte Suche stellt mehrere Optionen zur Verfügung, um die Suche zu präzisieren. 
+       \end{description}
+    \end{itemize}
+    \item Komponentenliste
+    \item Login/Account
+    \item Administration
+ \end{itemize}
+ 
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{bilder/overview.jpg}
+\caption{Beispiel für ein Seitenlayout}
+\label{fig:gui}
+\end{figure}
 
-Beispiele:
-\begin{itemize}
-\item /B10/
-Standardmäßig sind das Windows-Gestaltungs-Regelwerk sowie die Norm ISO
-9241-10: 1996 (Ergonomische Anforderungen für Bürotätigkeiten mit
-Bildschirmgeräten, Teil 10: Grundsätze der Dialoggestaltung) in allen
-Benutzeroberflächen zu beachten.
-
-\item /B20/ Folgende Rollen sind zu unterscheiden: \\
-\begin{tabular}{|c|c|c|}
-  \hline
-  Rolle &  Rechte & Benutzeroberfläche\\
-  \hline
-  Instandhaltung &  /F30/, /F40/, /F50/  & Funktionsspezifische Eingabemasken,
-                                                                        \ldots\\
-  \hline
-  Werksleitung & /F60/, /F70/  & \ldots\\
-  \hline
-  ...&...&...\\
-  \hline
-  \end{tabular}
-
-\end{itemize}
+Suchergebnisse werden in einem großen Bereich rechts bzw.\ unter der Navigation angezeigt. 
+Die Komponenten werden übersichtlich in tabellenartiger Form bereitgestellt. Bei einem Klick auf ein bestimmtes Suchergebnisses erscheinen genauere Informationen über die Komponente. 
+Oben rechts wird zudem der eingeloggte User angezeigt.
+Bei einem Klick auf den eingeloggten User ist eine Account-Verwaltungsseite geplant.
