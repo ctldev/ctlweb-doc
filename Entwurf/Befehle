@@ -1,0 +1,32 @@
+ctl-genmanifest [-f File][--version][--doxygen][-d Folder]
+File: Dokumentation in man-format / Doxygen--parsing   ->> plaintext!!!! evtl markdown
+                       default: ?
+ 
+Generiert ein Manifest in evtl man-page-format.
+Wenn kein Name angegeben wird, wird ein defaultname erstellt. 
+
+
+ 
+                       
+                       
+ctl-web [[[-a "id"| --add "id"] 
+                 -k|--key "public key"] 
+           -r"id"| --remove]                       
+           -o | --overview]
+           
+
+damit können Befehle vom web auf dem Cluster ausgeführt werden 
+
+
+ctl-runcgi [<host>]
+
+startet eine cgi (common gateway interface) für den admin
+
+
+ctl-register -a "id"| --add "id"
+                  -k|--key "public key"
+             -r"id"| --remove
+             -o | --overview
+
+            
+damit können  Befehle vom admin auf dem Cluster ausgeführt werden           
