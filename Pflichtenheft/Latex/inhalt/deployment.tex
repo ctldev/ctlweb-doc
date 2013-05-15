@@ -1,30 +1,60 @@
 % Hier wird das Deployment beschrieben.
 % --------------------------------------------------------------------
-
 \chapter{Deployment}
-\section{Frontend}
-Folgende Pakete werden für die funktionsfähigkeit der Webseite benötigt:
-  \begin{itemize}
-	\item paramiko
-	\item django-registration
-  \end{itemize}
+Es gibt viele Pakate die für den funktionierenden Server nötig sind. Im folgenden wird beschrieben, wie (und ggf. wo) diese zu installieren sind. 
 
 
-Zuerst muss das Projekt geforkt werden. Dazu im gewünschten Ordner den Befehl '
-git clone https://github.com/ctldev/ctlweb.git' ausführen. Im Ordner des
+Zuerst muss das Projekt geforkt werden. Dazu im gewünschten Ordner den Befehl 
+\begin{lstlisting}
+git clone https://github.com/ctldev/ctlweb.git 
+\end{lstlisting}
+ausführen. Im Ordner des
 Projektes befindet sich im Subordner 'src/frontend' die manage.py von Django.
-hier sollte der Befehl 'python manage.py create\_impressum' ausgeführt werden,
-um ein personalisiertes Impressum zu generieren. Alternativ muss ein eigenes 
+hier sollte der Befehl 
+\begin{lstlisting}
+python manage.py create\_impressum
+\end{lstlisting}
+ ausgeführt werden, um ein personalisiertes Impressum zu generieren. Alternativ muss ein eigenes 
 in dem Ordner 'src/frontend/template' mit dem namen
-'personal\_impressum.html' generiert werden. Nun kann die Webseite gestartet
-werden.
+'personal\_impressum.html' generiert werden. Ab jetzt kann die Webseite gestartet
+werden, indem man im Ordner 'src/frontend' den Befehl
+\begin{lstlisting}
+python manage.py runserver 
+\end{lstlisting}
+eingibt. Es fehlen aber noch einige Pakete um diese vollständig zu nutzen.
+Für das Datenbanksystem muss das SQLite-Paket installiert werden
+\begin{lstlisting}
+sudo apt-get install sqlite3
+\end{lstlisting}
+Als nächsten Schritt installiert man 
 Auf der Webseite sollten nun in der Admin-Section die Cluster hinzugefügt werden,
 auf denen sich die darzustellenden Komponenten befinden. Die Komponenten des
-Clusters lassen sich über den Befehl 'python manage.py request\_modules'
+Clusters lassen sich über den Befehl '
+\begin{lstlisting}
+python manage.py request\_modules
+\end{lstlisting}
 abfragen. Regelmäßige Abfragen sind so auch zum Beispiel über einen Cron-Job
 oder Ähnliches zu realisieren.
-\section{Backend}
-Folgendes Paket wird für die Funktionsfähigkeit des Programms benötigt:
-\begin{itemize}
-  \item requests (python3)
-\end{itemize}
+\newpage
+Der nächste Schritt ist Django 1.4 zu installieren, indem man den Befehl
+\begin{lstlisting}
+sudo pip install django==1.4
+\end{lstlisting}
+ausführen lässt. 
+Nun ist es wichtig pip zu installieren. Folgender Befehl erledigt das:
+\begin{lstlisting}
+sudo get-apt python-pip
+\end{lstlisting}
+Weiterhin brauch der Server die Django-registration, die wie folgt hinzugefügt wird:
+\begin{lstlisting}
+sudo pip install django-registration
+\end{lstlisting}
+Jetzt sind nur noch 2 Sachen zu erledigen. Einmal ist das Paramiko-Paket zu installieren 
+\begin{lstlisting}
+sudo install paramiko
+\end{lstlisting}
+und zuletzt muss noch der Sync-Befehl durchgeführt werden um die Datenbank vorzubereiten.
+\begin{lstlisting}
+python manage.py syncdb
+\end{lstlisting}
+Nun sollte die Webseite voll einsatzfähig sein.

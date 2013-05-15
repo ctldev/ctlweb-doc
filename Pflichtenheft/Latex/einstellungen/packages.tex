@@ -58,4 +58,32 @@
   ]{hyperref}
 
 
+%-------ZurDarstellung von Code-------------------------------------------------
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{lightblue}{rgb}{0.97,0.99,1}
+
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily,
+  commentstyle=\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  columns=fixed,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  backgroundcolor=\color{lightblue},
+  captionpos=b
+}
+
+
 
