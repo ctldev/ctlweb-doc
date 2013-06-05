@@ -1,0 +1,18 @@
+Beschreibung Class Diagramm vom Backend von ctl
+
+
+Database ist die Vaterklasse. Sie besitzt alle wichtigen Methoden,
+die nötig sind, um die Datenbank des Backends zu
+betreiben(create(),save(),remove(),get()).
+
+Component stellt die Tabelle "Component" in der DB dar und spezifiiert 
+deren Attribute "id" und "exe". Component erbt von Database, um ihre Tabelle zu
+modifizieren. Dazu kommen eigene Methoden, um Komponenten hochzuladen
+etc.
+
+Access ist wichtig, um ssh Zugriffmodifikationen zu ermöglichen.
+Alle Klassen, die dies möchten, werden von dieser Klasse abgeleitet.
+Access erbt zudem von Database.
+
+User und Web erben von Access und damit indirekt auch von Database.
+Sie stellen die Tabelle User bzw. Web in der DB dar.

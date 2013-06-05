@@ -1,0 +1,31 @@
+% Hier wird das Deployment beschrieben.
+% --------------------------------------------------------------------
+
+\chapter{Deployment}
+\section{Frontend}
+Folgende Pakete werden für die funktionsfähigkeit der Webseite benötigt:
+  \begin{itemize}
+	\item paramiko
+	\item django 1.3
+	\item django-registration
+  \end{itemize}
+
+
+Zuerst muss das Projekt geforkt werden. Dazu im gewünschten Ordner den Befehl '
+git clone https://github.com/ctldev/ctlweb.git' ausführen. Im Ordner des
+Projektes befindet sich im Subordner 'src/frontend' die manage.py von Django.
+Hier sollte der Befehl 'python manage.py create\_impressum' ausgeführt werden,
+um ein personalisiertes Impressum zu generieren. Alternativ muss ein eigenes 
+in dem Ordner 'src/frontend/template' mit dem Namen
+'personal\_impressum.html' generiert werden. Nun kann die Webseite gestartet
+werden.
+Auf der Webseite sollten nun in der Admin-Section die Cluster hinzugefügt werden,
+auf denen sich die darzustellenden Komponenten befinden. Die Komponenten des
+Clusters lassen sich über den Befehl 'python manage.py request\_modules'
+abfragen. Regelmäßige Abfragen sind so auch zum Beispiel über einen Cron-Job
+oder Ähnliches zu realisieren.
+\section{Backend}
+Folgendes Paket wird für die Funktionsfähigkeit des Programms benötigt:
+\begin{itemize}
+  \item requests (python3)
+\end{itemize}
