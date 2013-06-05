@@ -1,0 +1,29 @@
+\section{Backend-DB}
+
+Die Backend Datenbank speichert die grundsätzlichen Informationen zu
+
+\begin{itemize}
+  \item Modulen mit
+	\begin{itemize}
+	  \item Modulname
+	  \item Pfad zum Dokumentationstext
+	  \item Administrator des Moduls
+	  \item Executable des Moduls
+	  \item CI des Moduls
+	\end{itemize}
+
+  \item Zugriffsberechtigten Nutzern
+	\begin{itemize}
+	  \item Alias für den Nutzer in der Form <user@frondenddomain>
+	  \item ssh-Schlüssel
+	\end{itemize}
+
+  \item Zugriffsberechtigten Domains
+	\begin{itemize}
+	  \item Domainname des Frontends
+	  \item ssh-Schlüssel
+	\end{itemize}
+\end{itemize}
+
+Die Backend-Commandos greifen auf die Datenbank über die Database-Bibliothek
+zu.
