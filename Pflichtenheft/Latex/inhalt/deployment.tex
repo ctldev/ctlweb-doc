@@ -1,6 +1,7 @@
 % Hier wird das Deployment beschrieben.
 % --------------------------------------------------------------------
 \chapter{Deployment}
+\section{Frontend}
 Es gibt viele Pakate die für den funktionierenden Server nötig sind. Im folgenden wird beschrieben, wie (und ggf. wo) diese zu installieren sind. 
 
 
@@ -51,10 +52,17 @@ sudo pip install django-registration
 \end{lstlisting}
 Jetzt sind nur noch 2 Sachen zu erledigen. Einmal ist das Paramiko-Paket zu installieren 
 \begin{lstlisting}
-sudo install paramiko
+sudo pip install paramiko
 \end{lstlisting}
 und zuletzt muss noch der Sync-Befehl durchgeführt werden um die Datenbank vorzubereiten.
 \begin{lstlisting}
 python manage.py syncdb
 \end{lstlisting}
-Nun sollte die Webseite voll einsatzfähig sein.
+Nun sollte das Frontend voll einsatzfähig sein.
+\section{Backend}
+Für die Backendfunktionalität ist es nötig python3 zu installieren.
+\begin{lstlisting}
+sudo apt-get install python3
+\end{lstlisting}
+
+
