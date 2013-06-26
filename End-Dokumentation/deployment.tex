@@ -1,7 +1,7 @@
 % Hier wird das Deployment beschrieben.
 % --------------------------------------------------------------------
-\chapter{Deployment}
-\section{Frontend}
+\section{Deployment}
+\subsection{Frontend}
 Es gibt viele Pakate die für den funktionierenden Server nötig sind. Im folgenden wird beschrieben, wie (und ggf. wo) diese zu installieren sind. 
 
 Zuerst muss das Projekt geforkt werden. Dazu im gewünschten Ordner den Befehl 
@@ -40,7 +40,6 @@ python manage.py request\_modules
 \end{lstlisting}
 abfragen. Regelmäßige Abfragen sind so auch zum Beispiel über einen Cron-Job
 oder Ähnliches zu realisieren.
-\newpage
 Nun ist es wichtig pip zu installieren. Folgender Befehl erledigt das:
 \begin{lstlisting}
 sudo get-apt python-pip
@@ -58,7 +57,7 @@ und zuletzt muss noch der Sync-Befehl durchgeführt werden um die Datenbank vorz
 python manage.py syncdb
 \end{lstlisting}
 Nun sollte das Frontend voll einsatzfähig sein.
-\section{Backend}
+\subsection{Backend}
 Für die Backendfunktionalität ist es nötig python3 zu installieren.
 \begin{lstlisting}
 sudo apt-get install python3
