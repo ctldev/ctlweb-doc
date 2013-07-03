@@ -1,6 +1,6 @@
 \begin{figure}[H]
   \begin{center}
-	\includegraphics[width=0.6\linewidth]{Bilder/ctl-db.svg}
+	\includegraphics[width=2\linewidth]{Bilder/ctl-db.pdf}
 	\caption{Modell der Frontend-Datenbank}
 	\label{fb_db}
   \end{center}
@@ -11,7 +11,7 @@ gibt es zwei kleinere Abschnitte; zum Einen ist es die Userverwaltung und zum
 Anderen die Verwaltung der Componenten. 
 
 Bei der Userverwaltung wurden die Standarts von Django
-\footnote{\href{https://docs.djangoproject.com}} genutzt. Dazu wurden eine
+\footnote{\url{https://docs.djangoproject.com}} genutzt. Dazu wurden eine
 weitere Tabelle erstellt, welchem jeden User bestimmte Keys zuordnet
 (\textbf{Userkeys}) und damit beide Felder zusammen unique sind, und eine, in 
 der Mails abgespeichert werden können (\textbf{Mails}).
@@ -20,24 +20,24 @@ Zur Componentenverwaltung gehören \textbf{Webserver}, \textbf{Cluster},
 \textbf{ModuleTokenValidation}, \textbf{Interfaces}, \textbf{Programmer}, 
 \textbf{Components} sowie einige Verbindungstabellen.
 Falls in der folgenden Beschreibung keine PK angegeben ist, existiert ein PK
-namens \textit[id}. 
+namens \textit{id}. 
 
-\begin{itemize}
+\begin{description}
   \item[\textbf{Cluster}]
 	Sämtliche Felder dieser Klasse dürfen den Wert \glqq null\grqq\ annehmen.
 	Allerdings sind \textit{ip} und \textit{domain} zusammen unique.
   \item[\textbf{Components}]
 	Die Spalte \textit{name} ist unique. In \textit{date} wird das Datum der
-	letzten Änderung abgespeichert und in \textit{date_creation} das
-	Erstellungsdatum. Die \textit{brief_description} darf im Übrigen nur 255
+	letzten Änderung abgespeichert und in \textit{date\_creation} das
+	Erstellungsdatum. Die \textit{brief\_description} darf im Übrigen nur 255
 	Zeichen lang sein.
   \item[\textbf{Components\_Cluster}]
 	Dies ist die Verbindungstabelle zwischen \textbf{Cluster} und
-	\textbf{Components}. Dabei wird jeweils der Speicherpfad (\textit{path}),
+	\textbf{Compo\-nents}. Dabei wird jeweils der Speicherpfad (\textit{path}),
 	den Quellcode (\textit{code}) und den ctl-\,Befehl (\textit{ctl}). Dabei
 	wird der ctl-\,Befehl beim Speichern automatisch generiert.
   \item[\textbf{Interfaces}]
-	Diese Tabelle hat ein PK - \textit{key}. Außerdem ist \ŧextit{name} unique.
+	Diese Tabelle hat ein PK - \textit{key}. Außerdem ist \textit{name} unique.
   \item[\textbf{Programmer}]
 	Die beiden Spalten \textit{component} - FK zu \textbf{Components} - und
 	\textit{email} sind zusammen unique. 
@@ -45,4 +45,4 @@ namens \textit[id}.
 	Hier können \textit{ip}, \textit{domain} und \textit{port} alle den Wert
 	\glqq null\grqq\ annehmen. Die ersten beiden von denen sind allerdings
 	zusammen unique.
-\end{itemize}
+\end{description}
