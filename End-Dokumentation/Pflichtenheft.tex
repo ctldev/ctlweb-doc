@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{lightblue}{rgb}{0.97,0.99,1}
+
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily,
+  commentstyle=\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  columns=fixed,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  backgroundcolor=\color{lightblue},
+  captionpos=b
+}
+
+\begin{document}
+\title{Dokumentation zum Ctl-Web}
+\begin{center}
+\author{
+Philipp Offensand\\
+Theodor van Nahl\\
+Johann Hong\\
+Eric Anders\\
+Jörn Hameyer\\
+Stephan Sobol\\
+Markus Dietrich\\
+}
+\end{center}
+\date{\today}
+
+
+
+\maketitle
+\tableofcontents
+
+%\include{Einleitung}
+%\include{Funktionsweise}
+\include{deployment}
+%\include{Dokumentation}
+%\include{Schluss}
+
+\end{document}
+
