@@ -22,31 +22,51 @@ Der Benutzer hat je nach Rechtestatus eine Gast-/Benutzer- oder eine Administrat
        \item[Erweiterte Suche] Die erweiterte Suche stellt mehrere Optionen zur Verfügung, um die Suche zu präzisieren. 
        \end{description}
     \end{itemize}
-    \item Verzeichnis
-      \begin{description}
-        \item[] Hier findet der Benutzer eine Liste von den verfügbaren Interfaces und ihren zugehörigen Komponenten.
-        Durch Auswählen einer bestimmten Komponente, wird der Benutzer zu ihrer Detailseite weitergeleitet.
-        Dort findet er neben der Beschreibung eine Übersicht zu den verantwortlichen Programmieren, der Versionsnummer, das Erstelldatum und auf welchem Server sich die betrachtete Komponente befindet. 
-        Dem Benutzer wird zudem ein Link angeboten, um die gewünschte Komponente bei sich zu integrieren. 
-      \end{description} 
-
     \item Anmeldung/Registrierung
       \begin{description}
         \item[Login] Der Benutzer kann sich mit seinem Benutzernamen/Passwort anmelden. Sollte er sein Passwort vergessen haben, gibt die Seite ihm per Eingabe seiner Mailadresse die Gelegenheit, sich ein Neues setzen zu lassen.
         \item[Registrieren]Der Benutzer kann sich mit einem beliebigen Benutzernamen und Passwort registrieren, die eine Emailadresse erfordert. 
       \end{description}   
-    
+    \item 
+      \begin{description}
+        \item[Verzeichnis] Hier findet der Benutzer eine Liste von den verfügbaren Interfaces und ihren zugehörigen Komponenten.
+        Durch Auswählen einer bestimmten Komponente, wird der Benutzer zu ihrer Detailseite weitergeleitet.
+        Dort findet er neben der Beschreibung eine Übersicht zu den verantwortlichen Programmieren, der Versionsnummer, das Erstelldatum und auf welchem Server sich die betrachtete Komponente befindet. 
+        Dem Benutzer wird zudem ein Link angeboten, um die gewünschte Komponente bei sich zu integrieren. 
+      
+      \begin{figure}[!htp]
+      \includegraphics[width=0.8\linewidth]{bilder/ctlweb.pdf}
+      \caption{Beispiel für ein Seitenlayout}
+      \label{fig:gui}
+      \end{figure}
+
+
+
+
+      \end{description} 
+
+      
+    \begin{figure}      \includegraphics[width=0.8\linewidth]{bilder/ctlweb2.pdf}
+      \caption{Administrationsübersicht}
+      \label{fig:gui}
+    \end{figure}
+
+
     \item Administration
       \begin{description}
-        \item[] test
+        \item[Components] In dieser Ansicht hat der User die Übersicht aller vorhandenen Komponenten. Er hat nun die Wahl, welche 
+        Komponenten er (in)aktiv schalten oder löschen möchte. 
+
+        \begin{figure}[!htp]
+          \includegraphics[width=0.8\linewidth]{bilder/components.pdf}
+          \caption{Admin-Komponentenübersicht}
+          \label{fig:gui}
+        \end{figure}
+             
       \end{description}
  \end{itemize}
  
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{bilder/ctlweb.pdf}
-\caption{Beispiel für ein Seitenlayout}
-\label{fig:gui}
-\end{figure}
+
 
 Suchergebnisse werden in einem großen Bereich rechts bzw.\ unter der Navigation angezeigt. 
 Die Komponenten werden übersichtlich in tabellenartiger Form bereitgestellt. Bei einem Klick auf ein bestimmtes Suchergebnisses erscheinen genauere Informationen über die Komponente. 
