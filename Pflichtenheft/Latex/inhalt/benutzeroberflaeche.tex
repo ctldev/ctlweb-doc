@@ -46,19 +46,31 @@ Der Benutzer hat je nach Rechtestatus eine Gast-/Benutzer- oder eine Administrat
       \end{description} 
 
       
-    \begin{figure}      \includegraphics[width=0.8\linewidth]{bilder/ctlweb2.pdf}
+
+
+    \item Administration
+
+    \begin{figure}[!htp]      
+    \includegraphics[width=0.8\linewidth]{bilder/ctlweb2.pdf}
       \caption{Administrationsübersicht}
       \label{fig:gui}
     \end{figure}
 
-
-    \item Administration
       \begin{description}
         \item[Components] In dieser Ansicht hat der User die Übersicht aller vorhandenen Komponenten. Er hat nun die Wahl, welche 
-        Komponenten er (in)aktiv schalten oder löschen möchte. 
+        Komponenten er (in)aktiv schalten oder löschen möchte. In der weiterführenden Detailsicht einer bestimmten Komponente, ist es nun möglich neben Beschreibungen, auch den zugehörigen Interface und den Cluster zu ändern. 
 
         \begin{figure}[!htp]
           \includegraphics[width=0.8\linewidth]{bilder/components.pdf}
+          \caption{Admin-Komponentenübersicht}
+          \label{fig:gui}
+        \end{figure}
+      \end{description}
+      \begin{description}
+        \item[Interfaces] In dieser Ansicht hat der User die Übersicht der verügbaren Interfaces, in denen sich die Komponenten befinden. Ferner wird er durch Auswählen der Interfaces auf eine Detailseite weitergeführt, wo er die Beschreibung, oder die hinzufügenden Komponenten ändern kann. 
+
+        \begin{figure}[!htp]
+          \includegraphics[width=0.8\linewidth]{bilder/interface.pdf}
           \caption{Admin-Komponentenübersicht}
           \label{fig:gui}
         \end{figure}
