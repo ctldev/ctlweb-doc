@@ -1,12 +1,17 @@
 \section{Backend}
 Das Backend betreibt unabhängig vom Frontend eine eigene Datenbank und definiert
 zusätzlich eigene Methoden, die die volle Kontrolle über diese DB bieten.
-Weiterhin definiert das Backend einige Konsolen Kommandos, welche die 
+Weiterhin definiert das Backend einige Konsolen Befehle, welche die 
 komfortable Nutzung sowie Administration von ctl-Systemen auf Clustern 
-sowie Nutzer-PCs ermöglicht.   
-
+sowie von Nutzern ermöglicht.   
 \subsection{Datenbankstruktur und ihre Zugriffsmethoden}
-  \includegraphics{bilder/clsdiagrambackend.pdf}
+\begin{figure}[H]
+  \begin{center}
+	\includegraphics[width=\linewidth]{bilder/clsdiagrambackend.pdf}
+	\caption{Klassen Diagramm der Datenbank}
+	\label{g_bd_db}
+  \end{center}
+\end{figure}
 
 Database ist die Vaterklasse. Sie besitzt alle wichtigen Methoden,
 die nötig sind, um die Datenbank des Backends zu
@@ -24,5 +29,62 @@ Access erbt zudem von Database.
 User und Web erben von Access und damit indirekt auch von Database.
 Sie stellen die Tabelle User bzw. Web in der DB dar.
 
-\subsection{Konsolen Kommandos}
+\subsection{Konsolen Befehle}
+Folgende Konsolen Befehle existieren:
+\begin{itemize}
+  \item ctl-component
+  \item ctl-genmanifest
+  \item ctl-init
+  \item ctl-register
+  \item ctl-runcgi
+  \item ctl-web
+  \item ctl-webinteractive
+\end{itemize}
 
+\subsubsection{ctl-init}
+ctl-init startet die gewünschte Komponente auf dem Cluster.
+
+\subsubsection{ctl-genmanifest}
+\begin{figure}[H]
+  \begin{center}
+	\includegraphics[scale=0.7]{bilder/ctl-genmanifest_usecase.pdf}
+	\caption{Use-Case Diagramm von ctl-genmanifest}
+	\label{g_ctl-genmanifest_uc}
+  \end{center}
+\end{figure}
+Wie in Abb.\ \ref{g_ctl-genmanifest_uc} zu sehen, kann der Nutzer von seinem
+Code ein Manifest Paket erstellen lassen, indem er die Komponente und dessen
+Interface spezifiziert. Sobald der Cluster das o.k. gibt, wird das Manifest
+Paket geschnürt.
+
+\subsubsection{ctl-register / ctl-web}
+\begin{figure}[H]
+  \begin{center}
+	\includegraphics[scale=0.6]{bilder/ctl-register_usecase.pdf}
+	\caption{Use-Case Diagramm von ctl-register / ctl-web}
+	\label{g_ctl-register_uc}
+  \end{center}
+\end{figure}
+In Abb.\ \ref{g_ctl-register_uc} ist ein Use Case dargestellt, welches
+ctl-register und ctl-web in einem Diagramm zeigt, da beide Funktionen im Grunde  
+die gleichen Dinge bewältigen.
+Das ctl-System bzw. der Administrator kann Nutzer und/oder Web-Seiten
+entweder registrieren oder löschen.
+Eine Zusatzfunktion ist die Übersicht über alle registrierten Nutzer
+und/oder Web-Seiten.
+
+\subsubsection{ctl-webinteractive}
+\begin{figure}[H]
+  \begin{center}
+	\includegraphics[scale=0.6]{bilder/activitydiagrambackend.pdf}
+	\caption{Activity Diagramm von ctl-webinteractive}
+	\label{g ctl-webinteractive}
+  \end{center}
+\end{figure}
+ctl-webinteractive stellt einen besonderen Dienst zur Verfügung, und zwar
+erlaubt es dem unerfahrenen Benutzer durch einen "`Wizard"' bestimmte Befehle
+wie ctl-component, ctl-register sowie ctl-web ausführen. Der Nutzer wird dabei
+durch jeden einzelnen Schritt geleitet, wie Namen, Key oder sonstiges eingeben.
+Am Ende führt ctl-webinteractive dann den entsprechenden Befehl mit den
+gegebenen Werten aus. Das Verhalten des ctl-webinteractive Befehls ist 
+im Bild zu sehen \ref{g ctl-webinteractive}.
