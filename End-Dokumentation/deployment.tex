@@ -58,9 +58,53 @@ python manage.py syncdb
 \end{lstlisting}
 Nun sollte das Frontend voll einsatzfähig sein.
 \subsection{Backend}
-Für die Backendfunktionalität ist es nötig python3 zu installieren.
+Hier werden nun die Schritte beschrieben, die nötig sind, um das Backend des
+ctl-web Systems voll einsatzfähig zu machen.
+
+Zunächst ist es erforderlich Python 3 zu installieren, sowie die Virtual
+Environment Funktionalität hinzuzufügen.
 \begin{lstlisting}
-sudo apt-get install python3
+  sudo apt-get install python3 git python-virtualenv
 \end{lstlisting}
+Dann wird ein neuer User für das ctl-System angelegt
+\begin{lstlisting}
+  sudo adduser ctl
+\end{lstlisting}
+sowie das Passwort deaktiviert, was zu einer Erhöhung der Sicherheit führt.
+\begin{lstlisting}
+  sudo usermod -l ctl
+\end{lstlisting}
+Es wird der User zu ctl gewechselt und das ctlweb-backend wird installiert.
+Dazu gehört auch das Erzeugen neuer ssh-keys und die Anpassung einiger
+Systempfade.
+\begin{lstlisting}
+  sudo su - ctl
+  ssh-keygen -t rsa -C ctl_backend_key
+  git clone https://github.com/ctldev/ctlweb.git
+  virtualenv -p python3 virtenv
+  echo 'export PYTHONPATH=${HOME}/ctlweb/lib/backend/:${PYTHONPATH}' >> \
+    ~/virtenv/bin/activate
+  echo 'export PATH=${HOME}/ctlweb/bin:${PATH}' >> ~/virtenv/bin/activate
+  echo '. ~/virtenv/bin/activate' >> ~/.bashrc
+
+  . ~/virtenv/bin/activate
+  pip install requests
+\end{lstlisting}
+
+Nachdem nun das Backend erfolgreich installiert wurde, folgt nun die
+Einrichtung desselbigen. Dazu wird die Konfigurationsdatei angepasst.
+\begin{lstlisting}
+  cp ~/ctlweb/etc/ctlweb.conf ~/.ctlweb.conf
+  vi ~/.ctlweb.conf
+\end{lstlisting}
+
+Schließlich muss nur noch der Ordner für den Manifest Store sowie die Datei für
+die Datenbank angelegt werden.
+\begin{lstlisting}
+  mkdir <Manifest_store>
+  touch <Database>
+\end{lstlisting}
+
+Nun ist das Backend erfolreich installiert und einsatzbereit!
 
 
