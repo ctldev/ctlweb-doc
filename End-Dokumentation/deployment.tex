@@ -2,60 +2,233 @@
 % --------------------------------------------------------------------
 \section{Deployment}
 \subsection{Frontend}
-Es gibt viele Pakate die für den funktionierenden Server nötig sind. Im folgenden wird beschrieben, wie (und ggf. wo) diese zu installieren sind. 
+Hier wird beschrieben, wie das Frontend des ctlweb-Projektes auf einem Ubuntu
+12.04 LTS eingerichtet wird. Die Installation auf anderen Systemen ist mit
+leicht anderen Befehlen ebenfalls möglich.
 
-Zuerst muss das Projekt geforkt werden. Dazu im gewünschten Ordner den Befehl 
+Benötigte Pakete: \begin{itemize}
+  \item python-virtualenv
+  \item python2.7-dev
+\end{itemize}
+
+zuerst wird eine neuer Benutzer angelegt. Dafür wird der Befehl
 \begin{lstlisting}
-git clone https://github.com/ctldev/ctlweb.git 
+sudo adduser ctlweb
 \end{lstlisting}
-ausführen. 
-Der nächste Schritt ist Django 1.4 zu installieren, indem man den Befehl
+ausgeführt. Für mehr Sicherheit sollte hier der Befehl
 \begin{lstlisting}
-sudo pip install django==1.4
+sudo usermod -l ctlweb
 \end{lstlisting}
-ausführen lässt.
-Im Ordner des
-Projektes befindet sich im Subordner 'src/frontend' die manage.py von Django.
-Hier sollte der Befehl 
+ausgeführt werden, der das Passwort von ctlweb deaktiviert.
+
+Als nächstes wird der Benutzer auf ctlweb gewechselt, um dort das frontend
+einzurichten. Außerdem wird ein SSH-Schlüssel zur Kommunikation mit dem Backend
+erstellt. 
 \begin{lstlisting}
-python manage.py create\_impressum
+  sudo su - ctlweb
+  ssh-keygen -t rsa -C ctl_backend_key
+  git clone https://github.com/ctldev/ctlweb.git
+  virtualenv -p python2 virtenv
+  echo '. ~/virtenv/bin/activate' >> ~/.bashrc
+
+  . ~/virtenv/bin/activate
+  pip install django==1.4 django-registration gunicorn
 \end{lstlisting}
- ausgeführt werden, um ein personalisiertes Impressum zu generieren. Alternativ muss ein eigenes 
-in dem Ordner 'src/frontend/template' mit dem namen
-'personal\_impressum.html' generiert werden. Ab jetzt kann die Webseite gestartet
-werden, indem man im Ordner 'src/frontend' den Befehl
+Ebenfalls installiert werden muss die python-Bibliothek paramiko, allerdings
+können hier bei der Installation über 
 \begin{lstlisting}
-python manage.py runserver 
+pip install paramiko
 \end{lstlisting}
-eingibt. Es fehlen aber noch einige Pakete um diese vollständig zu nutzen.
-Für das Datenbanksystem muss das SQLite-Paket installiert werden
+Fehler auftreten. Sollte dies der Fall sein, muss das Paket über die
+Paketverwaltung des Systems erfolgen, also zum Beispiel als root über den
+Befehl
 \begin{lstlisting}
-sudo apt-get install sqlite3db
+apt-get install python-paramiko
 \end{lstlisting}
+
+Als nächstes werden die Einstellungen des Django-Projektes angepasst. Dazu
+wird über
+\begin{lstlisting}
+cd ctlweb/src/frontend/settings
+\end{lstlisting}
+in den entsprechenden Ordner gewechselt. Anschließend wird die Datei
+__init__.py über 
+\begin{lstlisting}
+nano __init__.py
+\end{lstlisting}
+angepasst, so dass folgendes in der Datei steht
+\begin{lstlisting}
+from .deploy import *
+\end{lstlisting}
+anschließend wird die deploy.py erzeugt, der Einfachheit halber wird dazu die
+dev.py kopiert und anschließend bearbeitet. Über den Befehl 
+\begin{lstlisting}
+cp dev.py deploy.py
+\end{lstlisting}
+erfolgt das kopieren, dann über 
+\begin{lstlisting}
+nano deploy.py
+\end{lstlisting}
+bearbeiten, dass folgendes in der Datei steht. Werte in '<>' sollten dabei ohne
+<> mit den benötigten Werten ersetzt werden.
+\begin{lstlisting}
+#vim: set fileencoding=utf-8
+"""Development settings and globals."""
+
+from default import *
+from os.path import join, normpath
+
+# Local time zone for this installation. Choices can be found here:
+# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+# although not all choices may be available on all operating systems.
+# On Unix systems, a value of None will cause Django to use the same 
+# timezone as the operating system.
+# If running in a Windows environment this must be set to the same as your
+# system time zone.
+TIME_ZONE = '<Europe/Berlin>'
+
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = '<de-de>'
+
+SITE_DOMAIN = '<http://ctlweb.example.net>'
+
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': normpath(join(SITE_ROOT, 'app', 'ctlweb', 'ctlweb.db')),
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': '',
+            'PORT': '',
+        }
+        #prefer mysql?
+        #'default': {
+            #'ENGINE': 'django.db.backends.mysql',
+            #'NAME': '<ctlweb>', #database name
+            #'USER': '<ctlweb>', #database user
+            #'PASSWORD': '<password>',
+            #'HOST': '', #empty for localhost
+            #'PORT': '', #empty for default
+        #}
+    }
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+PAGINATION_PAGE_RANGE_INTERFACES = 8
+PAGINATION_PAGE_RANGE_COMPONENTS = 5
+PAGINATION_BUTTON_RANGE = 3
+
+SSH_KEY_FILE = /home/ctlweb/.ssh/ctl_backend_key
+SSH_KEY_PASSWORD = ''
+
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
+DEFAULT_FROM_EMAIL = '<ctlweb@example.net>'
+EMAIL_HOST = '<smtp.example.net>'
+EMAIL_HOST_USER = '<ctlweb@example.net>'
+EMAIL_HOST_PASSWORD = '<password>'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+\end{lstlisting}
+
+anschließend wird die Datenbank und das Impressum erstellt.
+\begin{lstlisting}
+cd ..
+python manage.py syncdb
+python manage.py create_impressum
+\end{lstlisting}
+
+Nun wird ein Upstart-Skript erstellt, dass es ermöglicht, die Webseite als
+Service laufen zu lassen und dadurch einen automatischen Start nach dem
+Herunterfahren des Servers wieder zu gewährleisten. Das Skript wird über 
+\begin{lstlisting}
+sudo nano /etc/init/ctlweb-frontend
+\end{lstlisting}
+bearbeitet, folgender Inhalt sollte danach eingetragen sein
+\begin{lstlisting}
+description "CtlWeb-Frontend starten und stoppen"
+version "1.0"
+author "Theodor van Nahl, Philipp Offensand"
+start on runlevel [2345]
+stop on runlevel [016]
+
+setuid ctlweb
+chdir /home/ctlweb/
+respawn
+
+script
+. /home/ctlweb/virtenv/bin/activate
+exec python manage.py run_gunicorn 127.0.0.1:4444
+end script
+\end{lstlisting}
+Nun kann das frontend über 
+\begin{lstlisting}
+sudo service ctlweb-frontend start
+\end{lstlisting}
+gestartet werden.
+Weiterhin muss das ausgeführte Django von einem echten Webserver weitergereicht
+werden. Erklärt wird dies hier über den leichtgewichtigen Webserver lighttpd. 
+Dazu wird über den Befehl
+\begin{lstlisting}
+sudo nano /etc/lighttpd/conf-available/20-ctlweb.conf
+\end{lstlisting}
+die Datei bearbeitet, in der folgendes stehen könnte
+\begin{lstlisting}
+\$HTTP["host"] =~"ctlweb.example.net" {
+  server.document-root = "/home/ctlweb/ctlweb/src/frontend/app/ctlweb/static"
+
+  \$HTTP["url"] !~ "/static/" {
+    proxy.balance = "hash"
+    proxy.server = ("" => ("CtlWeb" =>
+                           ("host" => "127.0.0.1", "port" => 4444 )
+    ))
+  }
+
+  alias.url = (
+    "/static/" => "/home/ctlweb/ctlweb/src/frontend/app/ctlweb/static/",
+  )
+
+  url.rewrite-once = (
+    "^/favicon.ico\$" => "/static\$1",
+    "^/static.*\$" => "\$1",
+  )
+}
+\end{lstlisting}
+
 Auf der Webseite sollten nun in der Admin-Section die Cluster hinzugefügt werden,
 auf denen sich die darzustellenden Komponenten befinden. Die Komponenten des
-Clusters lassen sich über den Befehl '
+Clusters lassen sich über den Befehl
 \begin{lstlisting}
 python manage.py request\_modules
 \end{lstlisting}
 abfragen. Regelmäßige Abfragen sind so auch zum Beispiel über einen Cron-Job
-oder Ähnliches zu realisieren.
-Nun ist es wichtig pip zu installieren. Folgender Befehl erledigt das:
-\begin{lstlisting}
-sudo get-apt python-pip
-\end{lstlisting}
-Weiterhin brauch der Server die Django-registration, die wie folgt hinzugefügt wird:
-\begin{lstlisting}
-sudo pip install django-registration
-\end{lstlisting}
-Jetzt sind nur noch 2 Sachen zu erledigen. Einmal ist das Paramiko-Paket zu installieren 
-\begin{lstlisting}
-sudo pip install paramiko
-\end{lstlisting}
-und zuletzt muss noch der Sync-Befehl durchgeführt werden um die Datenbank vorzubereiten.
-\begin{lstlisting}
-python manage.py syncdb
-\end{lstlisting}
+oder ähnliche Mechanismen zu realisieren.
+
 Nun sollte das Frontend voll einsatzfähig sein.
 \subsection{Backend}
 Hier werden nun die Schritte beschrieben, die nötig sind, um das Backend des
